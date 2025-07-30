@@ -8,7 +8,7 @@ LTP_URL="https://github.com/linux-test-project/ltp.git"
 LTP_SHA=20250530
 
 # Version of Kirk to install
-KIRK_VERSION=v1.5
+KIRK_VERSION=fault_injection
 
 # Build-depends needed to build the test suites, they'll be removed later
 BUILD_DEPS="\
@@ -77,9 +77,10 @@ make install prefix=/opt/ltp
 # Install kirk                                                         #
 ########################################################################
 
-git clone https://github.com/linux-test-project/kirk /opt/kirk
+git clone https://github.com/acerv/kirk /opt/kirk
 cd /opt/kirk
-git reset --hard $KIRK_VERSION
+#git reset --hard $KIRK_VERSION
+git checkout -b "$KIRK_VERSION" "origin/$KIRK_VERSION"
 rm -rf ./.git
 
 ########################################################################
